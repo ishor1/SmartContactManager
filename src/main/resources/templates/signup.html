@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-cart mt-0">
+						<!-- show message -->
+						<div th:if="${session.message}" class="alert alert-primary"
+							th:classappend="${session.message.type}" role="alert">
+							<h5 class="text-center" th:text="${session.message.content}"></h5>
+							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+						</div>
+						<!-- end show message -->
+
+						<div class="container text-center">
+							<img alt="icon" class="mt-2" style="width: 80px"
+								th:src="@{/img/book.png}">
+						</div>
+						<h3 class="text-center">Register Here</h3>
+						<form th:action="@{/do_register}" method="post"
+							th:object="${user}">
+
+							<div class="form-group m-2">
+								<label for="name">Enter Name</label> 
+								<input type="text"
+								th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" 
+									name="name" th:value="${user.name}" class="form-control"
+									id="name" aria-describedby="emailHelp"
+									placeholder="Enter your name" required />
+												 <div th:each="e:${#fields.errors('name')}" th:text="${e}" class="invalid-feedback">
+      										</div>
+      										</div>
+
+
+							<div class="form-group m-2">
+							  
+								<label for="email">Enter email</label> <input type="email"
+									name="email" th:value="${user.email}" class="form-control"
+									id="email" aria-describedby="emailHelp"
+									placeholder="Enter your email" required />
+									 
+							</div>
+
+							<div class="form-group m-2">
+								<label for="pass">Enter password</label> <input type="password"
+									name="password"
+									class="form-control" id="pass" aria-describedby="emailHelp"
+									placeholder="Enter your password" required />
+							</div>
+
+
+							<div class="form-group m-2">
+
+								<textarea rows="6" placeholder="Enter something your self"
+									name="about" th:text="${user.about}" class="form-control"></textarea>
+							</div>
+
+
+							<div class="form-check text-center">
+								<input type="checkbox" name="check" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">Check me out</label>
+							</div>
+
+							<div class="container form-check-input  text-center mt-3 ">
+								<button class="  btn bg-primary  text-white">Submit</button>
+								<button class="btn bg-warning text-white">Reset</button>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}"></title>
+</head>
+<body>
+<section>
+<div class="card m-3 ml-3">
+	<div class="card-body">
+	<h1 class="text-center">Change Password Here !!</h1>
+	<div class="container-fluid mt-1">
+	<div class="row">
+	<div class="col-md-10 offset-md-1">
+	
+	<form th:action="@{/user/changePass}" method="post" class="mt-2">
+	<!-- first column -->
+	<h5>Enter Your Old Password</h5>
+	<div class="input-group">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+		<i class="fa fa-plus"></i>
+			</div>
+		</div>
+		
+		<input type="text" required name="oldPassword" placeholder="Enter here" class="form-control">
+	</div>
+	<!-- end first column -->
+	
+	<!-- first column -->
+	<h5>Enter Your New Password</h5>
+	<div class="input-group">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+		<i class="fa fa-plus"></i>
+			</div>
+		</div>
+		
+		<input type="text" required name="newPassword" placeholder="Enter here" class="form-control">
+	</div>
+	<!-- end first column -->
+	<div class="container text-center mt-3">
+	<button type="reset" class="btn btn-warning">Reset</button>
+	<button type="submit" class="btn btn-primary">Change Password</button>
+	</div>
+	
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+	$(document).ready(()=>{
+		$('.item').removeClass('active');
+		$('#setting').addClass('active');
+	})
+</script>
+
+</section>
+	
+</body>
+</html>
