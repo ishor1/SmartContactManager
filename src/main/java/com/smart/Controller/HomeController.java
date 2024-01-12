@@ -45,6 +45,11 @@ private BCryptPasswordEncoder bCryptPasswordEncoder;
 		return "signup";
 	}
 
+		@GetMapping("/test")
+	public String test(Model model) {
+		model.addAttribute("title", "smartContact Manager");
+		return "this is testing code which is change in github";
+	}
 	// handler for registering user
 //	@PostMapping("/do_register")
 	@RequestMapping(value = "/do_register", method = RequestMethod.POST)
