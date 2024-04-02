@@ -31,7 +31,7 @@ public class EmailServices {
 			@Override
 //		encrypt-	devvnyvbiacdnelwcov
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("chyraj63@gmail.com","vnyvbiacdnelwcov");
+				return new PasswordAuthentication("email","password");
 			}
         	});
     	s.setDebug(true);
@@ -39,7 +39,7 @@ public class EmailServices {
     	//compose the message
     	MimeMessage m=new MimeMessage(s);
     	try {
-    		m.setFrom("chyraj63@gmail.com");
+    		m.setFrom("email");
     		m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
     	m.setSubject(subject);
 //    	m.setText(message);
